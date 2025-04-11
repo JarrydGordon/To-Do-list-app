@@ -1,0 +1,41 @@
+// General Workspace .clinerules for Client-Side To-Do List App
+
+// This file contains broad, project-wide guidelines applicable across different modes.
+// For specific language or tool rules, refer to mode-specific .clinerules files (e.g., .clinerules-code).
+
+// General Coding Standards
+// Emphasize clean, readable, and maintainable code.
+// Use modern JavaScript (ES6+) features appropriately.
+// Ensure proper separation of concerns: keep HTML structure, CSS styling, and JavaScript logic in distinct files (index.html, style.css, script.js).
+// Write comments to explain complex logic, assumptions, or non-obvious code sections.
+// Employ consistent naming conventions across HTML, CSS, and JavaScript (e.g., camelCase for JS variables/functions, kebab-case for CSS classes/HTML IDs).
+// Prioritize security: Sanitize or correctly encode all user-provided input before rendering in the DOM to prevent XSS vulnerabilities (e.g., use `textContent` instead of `innerHTML` for user input).
+
+// Documentation Guidelines
+// Maintain an up-to-date README.md file at the project root.
+// The README.md must include:
+//   - A brief description of the application's purpose.
+//   - Instructions on how to run the application (e.g., open index.html in a browser).
+//   - An overview of the main features and functionalities.
+// Ensure code comments are sufficient for others (or the agent in a future session) to understand the code's intent.
+
+// Testing Principles
+// All core functionalities (Add Task, View Tasks, Mark Complete/Incomplete, Delete Task, Persistence) must be tested.
+// Utilize automated UI testing via the `browser_action` tool to simulate user workflows and verify application state and behavior.
+// Automated tests should specifically cover data persistence across page reloads/browser sessions.
+// Perform manual cross-browser checks on recent versions of major browsers (Chrome, Firefox, Safari, Edge) to ensure basic compatibility.
+
+// Agentic Workflow Guidelines:
+// When complex, separable units of work are identified (e.g., implementing detailed browser automation test scripts, significant refactoring like storage logic encapsulation, advanced CSS styling), consider initiating a Boomerang Task for focused development.
+// Use the `browser_action` tool extensively for validating UI changes and functional correctness throughout the development process, not just for final testing.
+// Summarize key implementation details or challenges encountered when completing tasks, especially if handing off work or creating Boomerang Tasks.
+
+// Project Workflow & Best Practices
+// Maintain a single source of truth for the application state (the JavaScript array holding the tasks). Ensure the UI consistently reflects this state.
+// Use event delegation for handling events on dynamically generated elements (like task list items) to improve performance and simplify code.
+// Implement basic user feedback mechanisms for actions (e.g., visual confirmation of task addition/deletion, clear indication of completed tasks).
+// Structure HTML using semantic elements where appropriate.
+// Consider basic web accessibility principles (e.g., using appropriate element types like `<button>`, ensuring sufficient color contrast).
+// Aim for efficient DOM manipulation; avoid unnecessary re-rendering of the entire task list when only a single item changes, if feasible within complexity constraints.
+// Use a `.gitignore` file to exclude unnecessary files/directories from version control (e.g., OS-specific files, editor configurations).
+// Ensure all application data is correctly saved to and loaded from Local Storage to meet persistence requirements. Implement basic error handling for Local Storage operations (e.g., parsing errors, storage limits if relevant).

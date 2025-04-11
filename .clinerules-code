@@ -1,0 +1,65 @@
+// .clinerules-code for Simple To-Do List App
+// Generated based on project description and requirements.
+
+// Primary Tech Stack:
+// - HTML5
+// - CSS3
+// - JavaScript (ES6+)
+// - Browser Local Storage API
+
+// Coding Standards/Style Guide:
+// - Semantic HTML5 elements
+// - Standard CSS naming conventions (e.g., BEM suggested)
+// - Clean, readable ES6+ JavaScript
+// - Explicit comments for clarity where needed
+
+// Testing Framework/Approach:
+// - Manual Testing
+// - Automated UI Testing (using `browser_action`)
+
+// Integration Requirements:
+// - None (Self-contained application)
+// - Potential use of `browser_action` for testing automation.
+
+// --- JavaScript (ES6+) Rules ---
+// Use const for variables that won't be reassigned, let otherwise. Avoid var.
+// Use arrow functions (=>) where appropriate, especially for callbacks.
+// Ensure all user-provided input (task descriptions) is treated as text. Use `element.textContent = userInput` for rendering, NOT `element.innerHTML = userInput`, to prevent XSS.
+// Implement robust error handling for Local Storage operations (use try...catch blocks around `JSON.parse()` and `localStorage.setItem()`).
+// Validate data loaded from Local Storage to ensure it's the expected format (e.g., an array of objects with id, description, isCompleted). Handle corrupted/invalid data gracefully (e.g., default to empty array).
+// Maintain a single source of truth for the application state (the `tasks` array in JavaScript).
+// Ensure the UI (DOM) is always rendered based on the current state array. Avoid direct DOM manipulations that bypass the state.
+// Use event delegation on the main task list container (`ul`/`ol`) for handling events on dynamically added task items (checkboxes, delete buttons). Avoid adding event listeners to each individual item.
+// When updating the DOM after state changes (add, toggle, delete), prefer targeted updates (e.g., updating a single element's class or removing a single element) over full list re-renders where feasible for performance, unless simplicity dictates otherwise.
+// Structure JavaScript logic into functions with clear responsibilities (e.g., `loadTasks`, `saveTasks`, `renderTasks`, `addTask`, `toggleTaskComplete`, `deleteTask`).
+// Initialize application logic within a `DOMContentLoaded` event listener to ensure the DOM is ready.
+// Use strict equality (`===` and `!==`) for comparisons unless type coercion is explicitly required (e.g., comparing string `data-task-id` with number `task.id` might need `==`, but convert types first if possible).
+// Ensure input fields are cleared after successful task addition.
+// Use unique IDs for tasks (e.g., `Date.now()` or a more robust method like UUID if collisions are a concern, though unlikely here).
+
+// --- HTML Rules ---
+// Use semantic HTML5 elements (e.g., `<main>`, `<section>`, `<form>`, `<label>`, `<button>`, `<input>`, `<ul>`/`<ol>`, `<li>`).
+// Ensure interactive elements like checkboxes and delete buttons are implemented using appropriate HTML elements (`<input type="checkbox">`, `<button>`). Associate labels with inputs using `for` attribute.
+// Use `data-*` attributes (e.g., `data-task-id`) to associate task data with DOM elements for easier retrieval in event handlers.
+// Ensure the main list container has a unique ID (e.g., `id="task-list"`).
+// Ensure the task input field and add button have unique IDs (e.g., `id="task-input"`, `id="add-task-btn"`).
+
+// --- CSS Rules ---
+// Keep CSS rules in the separate `style.css` file.
+// Follow a consistent naming convention (e.g., BEM - Block, Element, Modifier) for CSS classes to improve readability and maintainability.
+// Provide distinct visual styling for completed tasks (e.g., `text-decoration: line-through;`, different color). Use a dedicated class (e.g., `.completed`) on the `<li>` element.
+// Style interactive elements (buttons, checkboxes) clearly.
+
+// --- General Guidelines ---
+// Keep HTML, CSS, and JavaScript in separate files (`index.html`, `style.css`, `script.js`).
+// Ensure code is well-commented, especially for complex logic or assumptions.
+// Include a `.gitignore` file to exclude unnecessary files/directories (e.g., `node_modules`, `.DS_Store`, editor configuration).
+// Write a clear `README.md` explaining the application, its features, and how to run it (open `index.html`).
+
+// --- Agentic Tool Usage Guidelines (`browser_action`): ---
+// When writing automated tests intended for `browser_action`:
+//   - Use specific and stable selectors (IDs preferred: `#task-input`, `#add-task-btn`, `#task-list`; then specific class combinations or `data-*` attributes: `[data-task-id="..."] .delete-btn`, `[data-task-id="..."] input[type='checkbox']`).
+//   - Include clear assertions (`assert element exists`, `assert text content`, `assert element class`, `assert input value`, `assert element checked`, `assert element does not exist`, `assert count`) to verify application state after each action.
+//   - Structure tests logically following user workflows (e.g., Add -> Verify -> Complete -> Verify -> Reload -> Verify Persistence -> Add Another -> Delete First -> Verify -> Reload -> Verify Persistence).
+//   - Ensure tests clean up Local Storage before starting or use unique keys if running concurrently (less likely needed here).
+//   - Test edge cases like adding empty tasks (should be prevented), adding tasks with leading/trailing whitespace (should be trimmed).

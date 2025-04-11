@@ -1,0 +1,59 @@
+# .rooignore for Simple To-Do App
+
+# Version Control System
+.git/
+
+# IDE / Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.komodoproject
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node.js / JavaScript dependencies & build artifacts
+# (Even if not strictly required by the core app, dev tooling might use them)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+build/
+dist/
+out/
+public/
+*.tsbuildinfo
+
+# Python cache/compiled files (General good practice)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Log files
+logs/
+*.log
+*.log.*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+*.bak
+*.old
